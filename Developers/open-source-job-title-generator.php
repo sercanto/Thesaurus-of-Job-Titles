@@ -5,10 +5,10 @@
     
     // TODO - FILL IN THE DATABASE SERVER NAME, THE DATABASE NAME, THE DATABASE USER AND PASSWORD
     // The user should have Execute privileges on the database
-    $dbhost  = 'Database Server Name';
+    $dbhost  = 'localhost';
     $dbname  = 'thesaurus_of_job_titles';
-    $dbuser  = 'Database User';
-    $dbpass  = 'Database Password';
+    $dbuser  = 'root';
+    $dbpass  = 'root';
     
     $sStoredProcedureToCall = 'spEvaluateGivenJobTitle';
     
@@ -58,9 +58,8 @@
             
             // update query as necessary
             $stmt = $connection->prepare("Call $dbname.$sStoredProcedureToCall( ?, true );");
-            
             if (!$stmt) {
-                $sErrorString = "Preparing Statement failed: (" . $stmt->errno . ") " . $stmt->error;
+                $sErrorString = "Preparing Statement failed: (" . "stmt->errno" . ") " . "stmt->error";
                 $bErrorFree = false;
             }
             else {
@@ -334,5 +333,3 @@
         echo "</HTML>\n";
 
     }
-
-?>
