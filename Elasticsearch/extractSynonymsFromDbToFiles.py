@@ -2,6 +2,7 @@ import mysql.connector
 import os
 import sys
 
+# Usage: python extractSynonymsFromDbToFiles.py db_host db_user db_password db_name
 
 def extract_to_file(db_host, db_user, db_password, db_name, table_name, file_name):
     # Connessione al database MySQL
