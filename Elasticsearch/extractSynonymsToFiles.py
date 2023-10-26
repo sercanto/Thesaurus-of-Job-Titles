@@ -42,11 +42,11 @@ def main():
 
     # Estrazione dei dati dal database e scrittura nei file di testo
     extract_to_file(db_host, db_user, db_password,
-                    db_name, "synonym_job_titles_for_index", "../synonym_job_titles_for_index.txt")
+                    db_name, "synonym_job_titles_for_index", "synonym_job_titles_for_index.txt")
     extract_to_file(db_host, db_user, db_password,
-                    db_name, "synonym_job_titles_for_search", "../synonym_job_titles_for_search.txt")
+                    db_name, "synonym_job_titles_for_search", "synonym_job_titles_for_search.txt")
     extract_to_file(db_host, db_user, db_password,
-                    db_name, "synonym_job_titles_for_search_alternative", "../synonym_job_titles_for_search_alternative.txt")
+                    db_name, "synonym_job_titles_for_search_alternative", "synonym_job_titles_for_search_alternative.txt")
 
     print(
         f"Done.")
