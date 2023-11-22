@@ -74,7 +74,6 @@ foreach ($allcats as $key => $value) {
     if ($cat2 != '') {
         $cat2Id = $dbh->query(str_replace('?', $cat2, $cat2ExistsQuery))->fetch();
         if ($cat2Id === false) {
-            $cat2Expanse = $cat1 . ':' . $cat2;
             $stmt = $dbh->prepare("insert into cat2 (name,id_cat1) values ('$cat2','$cat1Id');");
             try {
                 $stmt->execute();
@@ -87,7 +86,6 @@ foreach ($allcats as $key => $value) {
         }
         if ($cat3 != '') {
             $cat3Id = $dbh->query(str_replace('?', $cat3, $cat3ExistsQuery))->fetch();
-            $cat3Expanse = $cat1 . ':' . $cat2;
             if ($cat3Id === false) {
                 $stmt = $dbh->prepare("insert into cat3 (name,id_cat2) values ('$cat3','$cat2Id');");
                 try {
