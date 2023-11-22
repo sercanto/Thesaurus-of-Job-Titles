@@ -51,8 +51,8 @@ try {
 $cat1ExistsQuery = "select id from cat1 where name='?'";
 $cat2ExistsQuery = "select id from cat2 where name='?'";
 $cat3ExistsQuery = "select id from cat3 where name='?'";
-$diobon = $dbh->query('select distinct(ar.specificCategory) from assigned_role ar');
-$allcats = $diobon->fetchAll(PDO::FETCH_NUM);
+$stmt = $dbh->query('select distinct(ar.specificCategory) from assigned_role ar');
+$allcats = $stmt->fetchAll(PDO::FETCH_NUM);
 foreach ($allcats as $key => $value) {
     $catString = $value[0];
     $catSeparated = explode(':', $catString);
