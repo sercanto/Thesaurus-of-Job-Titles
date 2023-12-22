@@ -1,5 +1,5 @@
 import mysql.connector
-import os
+import os,re
 import sys
 
 # Usage: python extractSynonymsFromDbToFiles.py db_host db_user db_password db_name
@@ -26,8 +26,9 @@ def extract_to_file(db_host, db_user, db_password, db_name, table_name, file_nam
     with open(file_name, "w") as f:
         # Iterazione sulle righe del set di risultati
         for row in cursor:
+            row_formatted=re.sub(",(?=[a-zA-Z])",", ",row[0])
             # Scrittura della riga nel file di testo
-            f.write(f"{row[0]}\n")
+            f.write(f"{row_formatted}\n")
 
     # Chiusura del cursore e della connessione
     cursor.close()
@@ -48,6 +49,8 @@ def main():
                     db_name, "synonym_job_titles_for_search", "synonym_job_titles_for_search.txt")
     extract_to_file(db_host, db_user, db_password,
                     db_name, "synonym_job_titles_for_search_alternative", "synonym_job_titles_for_search_alternative.txt")
+    extract_to_file(db_host, db_user, db_password,
+                    db_name, "synonym_job_titles_for_tagger", "synonym_job_titles_for_tagger.txt")
 
     print(
         f"Done.")
