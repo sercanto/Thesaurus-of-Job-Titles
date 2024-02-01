@@ -30,7 +30,7 @@ try {
       `name` VARCHAR(255) NOT NULL,
       PRIMARY KEY (`id`),
       UNIQUE KEY `unique_name` (`name`)
-    );
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;
     
     CREATE TABLE `thesaurus_of_job_titles`.`cat2` (
       `id` INT NOT NULL AUTO_INCREMENT,
@@ -39,7 +39,7 @@ try {
       PRIMARY KEY (`id`),
       FOREIGN KEY (`id_cat1`) REFERENCES `thesaurus_of_job_titles`.`cat1` (`id`),
       UNIQUE KEY `unique_name` (`name`)
-    );
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;
     
     CREATE TABLE `thesaurus_of_job_titles`.`cat3` (
       `id` INT NOT NULL AUTO_INCREMENT,
@@ -48,7 +48,7 @@ try {
       PRIMARY KEY (`id`),
       FOREIGN KEY (`id_cat2`) REFERENCES `thesaurus_of_job_titles`.`cat2` (`id`),
       UNIQUE KEY `unique_name` (`name`)
-    );');
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;');
 } catch (\Throwable $th) {
     throw $th;
 }
