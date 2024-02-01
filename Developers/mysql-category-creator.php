@@ -10,7 +10,13 @@
  * cat1->cat2->cat3 has a 1->n->m relationship.
  */
 
-$dbh = new PDO('mysql:host=localhost;dbname=thesaurus_of_job_titles', "root", "root");
+$args = getopt('', ['host:', 'dbname:', 'user:', 'password:', 'port:']);
+$dbHost = !empty($args['host']) ? strval($args['host']) : 'localhost';
+$dbName = !empty($args['dbname']) ? strval($args['dbname']) : 'thesaurus_of_job_titles';
+$dbUser = !empty($args['user']) ? strval($args['user']) : 'root';
+$dbPassword = !empty($args['password']) ? strval($args['password']) : 'root';
+$dbPort = !empty($args['port']) ? strval($args['port']) : 3306;
+$dbh = new PDO("mysql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
 // Create new category tables
 try {
